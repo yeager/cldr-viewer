@@ -1,7 +1,7 @@
 [main]
 host = https://www.transifex.com
 
-[o:linguaedit:p:cldr-viewer:r:cldr-viewer-pot]
+[o:danielnylander:p:cldr-viewer:r:cldr-viewer-pot]
 file_filter = po/<lang>.po
 source_file = po/cldr-viewer.pot
 source_lang = en
