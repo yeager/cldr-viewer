@@ -1,10 +1,13 @@
 [Desktop Entry]
 Type=Application
 Name=CLDR Locale Viewer
+Name[sv]=CLDR Locale-visare
 GenericName=CLDR Data Browser
 Comment=Visualize Unicode CLDR locale data completeness
+Comment[sv]=Visualisera Unicode CLDR locale-data
 Exec=cldr-viewer
 Icon=se.danielnylander.cldr-viewer
 Terminal=false
 Categories=Development;Translation;
 Keywords=cldr;locale;translation;i18n;l10n;unicode;
+Keywords[sv]=cldr;locale;översättning;i18n;l10n;unicode;
