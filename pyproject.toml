@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cldr-viewer"
+version = "0.1.0"
+description = "GTK4/Adwaita app to visualize Unicode CLDR locale data completeness"
+readme = "README.md"
+license = {text = "GPL-3.0-or-later"}
+authors = [{name = "Daniel Nylander", email = "daniel@danielnylander.se"}]
+requires-python = ">=3.10"
+dependencies = ["PyGObject>=3.42"]
+
+[project.scripts]
+cldr-viewer = "cldr_viewer.main:main"
+
+[project.urls]
+Homepage = "https://github.com/yeager/cldr-viewer"
+Repository = "https://github.com/yeager/cldr-viewer"
+
+[tool.setuptools.packages.find]
+where = ["src"]

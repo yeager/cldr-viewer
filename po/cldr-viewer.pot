@@ -1,0 +1,95 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the cldr-viewer package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: cldr-viewer 0.1.0\n"
+"Report-Msgid-Bugs-To: daniel@danielnylander.se\n"
+"POT-Creation-Date: 2026-02-14 16:10+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/cldr_viewer/main.py:33
+msgid "Date Formats"
+msgstr ""
+
+#: src/cldr_viewer/main.py:34
+msgid "Date Fields"
+msgstr ""
+
+#: src/cldr_viewer/main.py:35
+msgid "Currencies"
+msgstr ""
+
+#: src/cldr_viewer/main.py:36
+msgid "Units"
+msgstr ""
+
+#: src/cldr_viewer/main.py:37
+msgid "Time Zone Names"
+msgstr ""
+
+#: src/cldr_viewer/main.py:38
+msgid "Language Names"
+msgstr ""
+
+#: src/cldr_viewer/main.py:39
+msgid "Territory Names"
+msgstr ""
+
+#: src/cldr_viewer/main.py:46
+msgid "CLDR Locale Viewer"
+msgstr ""
+
+#: src/cldr_viewer/main.py:65
+msgid "Clear cache"
+msgstr ""
+
+#: src/cldr_viewer/main.py:82
+msgid "Locale:"
+msgstr ""
+
+#: src/cldr_viewer/main.py:88
+msgid "Compare with:"
+msgstr ""
+
+#: src/cldr_viewer/main.py:94
+msgid "Category:"
+msgstr ""
+
+#: src/cldr_viewer/main.py:104
+msgid "Filter keys…"
+msgstr ""
+
+#: src/cldr_viewer/main.py:140
+msgid "Key"
+msgstr ""
+
+#: src/cldr_viewer/main.py:149
+msgid "Value"
+msgstr ""
+
+#: src/cldr_viewer/main.py:158
+msgid "Reference"
+msgstr ""
+
+#: src/cldr_viewer/main.py:167
+msgid "Status"
+msgstr ""
+
+#: src/cldr_viewer/main.py:279
+#, python-brace-format
+msgid "Coverage: {percent}% ({present}/{total})"
+msgstr ""
+
+#: src/cldr_viewer/main.py:326
+msgid "⚠ MISSING"
+msgstr ""
