@@ -93,3 +93,15 @@ msgstr ""
 #: src/cldr_viewer/main.py:326
 msgid "⚠ MISSING"
 msgstr ""
+
+#: desktop file
+msgid "CLDR Data Browser"
+msgstr ""
+
+#: desktop file
+msgid "Visualize Unicode CLDR locale data completeness"
+msgstr ""
+
+#: desktop file
+msgid "cldr;locale;translation;i18n;l10n;unicode;"
+msgstr ""

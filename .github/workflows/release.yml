@@ -39,6 +39,11 @@ jobs:
             msgfmt -o locale/$lang/LC_MESSAGES/cldr-viewer.mo "$po"
           done
 
+
+      - name: Generate translated .desktop file
+        run: |
+          python3 desktop-merge.py data/se.danielnylander.cldr-viewer.desktop.in po/ data/se.danielnylander.cldr-viewer.desktop
+
       - name: Build .deb
         run: |
           VERSION=${GITHUB_REF_NAME#v}
