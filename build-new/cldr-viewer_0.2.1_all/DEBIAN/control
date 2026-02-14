@@ -1,0 +1,10 @@
+Package: cldr-viewer
+Version: 0.2.1
+Section: utils
+Priority: optional
+Architecture: all
+Depends: python3, python3-gi, gir1.2-gtk-4.0, gir1.2-adw-1
+Maintainer: Daniel Nylander <daniel@danielnylander.se>
+Description: GTK4 translation and localization tool
+ Part of the GTK4 localization toolkit for managing translations
+ and language packs.
