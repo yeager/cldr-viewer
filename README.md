@@ -37,3 +37,7 @@ CLDR JSON data from [unicode-org/cldr-json](https://github.com/unicode-org/cldr-
 ## License
 
 GPL-3.0-or-later — see [LICENSE](LICENSE).
+
+## Translation
+
+Translations are managed via [Transifex](https://app.transifex.com/danielnylander/cldr-viewer/). See [po/README.md](po/README.md) for details.
