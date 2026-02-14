@@ -42,7 +42,7 @@ CATEGORY_LABELS = {
 
 class CldrViewerWindow(Adw.ApplicationWindow):
     def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+        super().__init__(default_width=900, default_height=700, **kwargs)
         self.set_title(_("CLDR Locale Viewer"))
         self.set_default_size(1100, 750)
 
