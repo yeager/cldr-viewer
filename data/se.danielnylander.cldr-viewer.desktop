@@ -1,8 +1,7 @@
 [Desktop Entry]
 Type=Application
 Name=CLDR Locale Viewer
-Name[sv]=CLDR-språkinställningsvisare
-GenericName=CLDR Data Browser
+_GenericName=CLDR Data Browser
 Comment=Visualize Unicode CLDR locale data completeness
 Exec=cldr-viewer
 Icon=se.danielnylander.cldr-viewer
