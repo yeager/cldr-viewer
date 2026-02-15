@@ -61,6 +61,14 @@ class CldrViewerWindow(Adw.ApplicationWindow):
         vbox.append(header)
 
         # Clear cache button
+        # Menu
+        menu = Gio.Menu()
+        about_section = Gio.Menu()
+        about_section.append(_("About"), "app.about")
+        menu.append_section(None, about_section)
+        menu_btn = Gtk.MenuButton(icon_name="open-menu-symbolic", menu_model=menu)
+        header.pack_end(menu_btn)
+
         clear_btn = Gtk.Button(icon_name="edit-clear-all-symbolic")
         clear_btn.set_tooltip_text(_("Clear cache"))
         clear_btn.connect("clicked", self._on_clear_cache)
@@ -366,10 +374,30 @@ class CldrViewerApp(Adw.Application):
             application_id="se.danielnylander.cldr-viewer",
             flags=Gio.ApplicationFlags.DEFAULT_FLAGS,
         )
+        about_action = Gio.SimpleAction.new("about", None)
+        about_action.connect("activate", self._on_about)
+        self.add_action(about_action)
 
     def do_activate(self):
         win = CldrViewerWindow(application=self)
         win.present()
+
+    def _on_about(self, *_args):
+        about = Adw.AboutWindow(
+            transient_for=self.props.active_window,
+            application_name=_("CLDR Locale Viewer"),
+            application_icon="cldr-viewer",
+            version="0.1.2",
+            developer_name="Daniel Nylander",
+            developers=["Daniel Nylander <daniel@danielnylander.se>"],
+            copyright="© 2026 Daniel Nylander",
+            license_type=Gtk.License.GPL_3_0,
+            website="https://github.com/yeager/cldr-viewer",
+            issue_url="https://github.com/yeager/cldr-viewer/issues",
+            translator_credits="Daniel Nylander <daniel@danielnylander.se>",
+            comments=_("Browse and compare Unicode CLDR locale data"),
+        )
+        about.present()
 
 
 def main():
