@@ -9,6 +9,13 @@ import threading
 import gi
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
+# Optional desktop notifications
+try:
+    gi.require_version("Notify", "0.7")
+    from gi.repository import Notify as _Notify
+    HAS_NOTIFY = True
+except (ValueError, ImportError):
+    HAS_NOTIFY = False
 from gi.repository import Gtk, Adw, GLib, GObject, Gio, Pango, Gdk
 
 from cldr_viewer.cldr_data import (
@@ -60,6 +67,51 @@ CATEGORY_LABELS = {
     "languages": _("Language Names"),
     "territories": _("Territory Names"),
 }
+
+
+
+import json as _json
+import platform as _platform
+from pathlib import Path as _Path
+
+_NOTIFY_APP = "cldr-viewer"
+
+
+def _notify_config_path():
+    return _Path(GLib.get_user_config_dir()) / _NOTIFY_APP / "notifications.json"
+
+
+def _load_notify_config():
+    try:
+        return _json.loads(_notify_config_path().read_text())
+    except Exception:
+        return {"enabled": False}
+
+
+def _save_notify_config(config):
+    p = _notify_config_path()
+    p.parent.mkdir(parents=True, exist_ok=True)
+    p.write_text(_json.dumps(config))
+
+
+def _send_notification(summary, body="", icon="dialog-information"):
+    if HAS_NOTIFY and _load_notify_config().get("enabled"):
+        try:
+            n = _Notify.Notification.new(summary, body, icon)
+            n.show()
+        except Exception:
+            pass
+
+
+def _get_system_info():
+    return "\n".join([
+        f"App: CLDR Locale Viewer",
+        f"Version: {"0.1.2"}",
+        f"GTK: {Gtk.get_major_version()}.{Gtk.get_minor_version()}.{Gtk.get_micro_version()}",
+        f"Adw: {Adw.get_major_version()}.{Adw.get_minor_version()}.{Adw.get_micro_version()}",
+        f"Python: {_platform.python_version()}",
+        f"OS: {_platform.system()} {_platform.release()} ({_platform.machine()})",
+    ])
 
 
 class CldrViewerWindow(Adw.ApplicationWindow):
