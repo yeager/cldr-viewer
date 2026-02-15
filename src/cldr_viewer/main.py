@@ -430,6 +430,7 @@ class CldrViewerApp(Adw.Application):
             license_type=Gtk.License.GPL_3_0,
             website="https://github.com/yeager/cldr-viewer",
             issue_url="https://github.com/yeager/cldr-viewer/issues",
+            translate_url="https://app.transifex.com/danielnylander/cldr-viewer/",
             translator_credits="Daniel Nylander <daniel@danielnylander.se>",
             comments=_("Browse and compare Unicode CLDR locale data"),
         )
