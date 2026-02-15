@@ -1,0 +1,158 @@
+# Swedish translations for PACKAGE package
+# Copyright (C) 2026 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2026-02-15 15:38+0100\n"
+"PO-Revision-Date: 2026-02-15 15:38+0100\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. type: TH
+#: data/man/cldr-viewer.1:1
+#, no-wrap
+msgid "CLDR-VIEWER"
+msgstr ""
+
+#. type: TH
+#: data/man/cldr-viewer.1:1
+#, no-wrap
+msgid "2026-02-15"
+msgstr ""
+
+#. type: TH
+#: data/man/cldr-viewer.1:1
+#, no-wrap
+msgid "Daniel Nylander"
+msgstr ""
+
+#. type: TH
+#: data/man/cldr-viewer.1:1
+#, no-wrap
+msgid "CLDR Viewer Manual"
+msgstr ""
+
+#. type: SH
+#: data/man/cldr-viewer.1:2
+#, no-wrap
+msgid "NAME"
+msgstr ""
+
+#. type: Plain text
+#: data/man/cldr-viewer.1:4
+msgid "cldr-viewer - Browse and compare Unicode CLDR locale data"
+msgstr ""
+
+#. type: SH
+#: data/man/cldr-viewer.1:4
+#, no-wrap
+msgid "SYNOPSIS"
+msgstr ""
+
+#. type: Plain text
+#: data/man/cldr-viewer.1:6
+msgid "B<cldr-viewer>"
+msgstr ""
+
+#. type: SH
+#: data/man/cldr-viewer.1:6
+#, no-wrap
+msgid "DESCRIPTION"
+msgstr ""
+
+#. type: Plain text
+#: data/man/cldr-viewer.1:8
+msgid ""
+"B<cldr-viewer> is a GTK4/Adwaita application for browsing and comparing "
+"Unicode CLDR locale data across locales. It displays date formats, month "
+"names, weekdays, currencies, units, and time zone names per locale. Features "
+"include side-by-side locale comparison, missing translation highlighting, "
+"coverage percentages per category, search and filter, and local caching with "
+"24-hour TTL."
+msgstr ""
+
+#. type: SH
+#: data/man/cldr-viewer.1:8
+#, no-wrap
+msgid "OPTIONS"
+msgstr ""
+
+#. type: TP
+#: data/man/cldr-viewer.1:9
+#, no-wrap
+msgid "B<--help>"
+msgstr ""
+
+#. type: Plain text
+#: data/man/cldr-viewer.1:12
+msgid "Show help message and exit."
+msgstr ""
+
+#. type: SH
+#: data/man/cldr-viewer.1:12
+#, no-wrap
+msgid "FILES"
+msgstr ""
+
+#. type: TP
+#: data/man/cldr-viewer.1:13
+#, no-wrap
+msgid "I<~/.config/cldr-viewer/>"
+msgstr ""
+
+#. type: Plain text
+#: data/man/cldr-viewer.1:16
+msgid "Configuration files."
+msgstr ""
+
+#. type: TP
+#: data/man/cldr-viewer.1:16
+#, no-wrap
+msgid "I<~/.cache/cldr-viewer/>"
+msgstr ""
+
+#. type: Plain text
+#: data/man/cldr-viewer.1:19
+msgid "Cached data."
+msgstr ""
+
+#. type: SH
+#: data/man/cldr-viewer.1:19
+#, no-wrap
+msgid "BUGS"
+msgstr ""
+
+#. type: Plain text
+#: data/man/cldr-viewer.1:21
+msgid "Report bugs at https://github.com/yeager/cldr-viewer/issues"
+msgstr ""
+
+#. type: SH
+#: data/man/cldr-viewer.1:21
+#, no-wrap
+msgid "AUTHOR"
+msgstr ""
+
+#. type: Plain text
+#: data/man/cldr-viewer.1:23
+msgid "Daniel Nylander E<lt>daniel@danielnylander.seE<gt>"
+msgstr ""
+
+#. type: SH
+#: data/man/cldr-viewer.1:23
+#, no-wrap
+msgid "SEE ALSO"
+msgstr ""
+
+#. type: Plain text
+#: data/man/cldr-viewer.1:24
+msgid "Project homepage: https://github.com/yeager/cldr-viewer"
+msgstr ""
