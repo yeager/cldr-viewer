@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cldr-viewer\n"
 "Report-Msgid-Bugs-To: daniel@danielnylander.se\n"
-"POT-Creation-Date: 2026-02-15 10:08+0100\n"
+"POT-Creation-Date: 2026-02-15 10:57+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,87 +17,87 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/cldr_viewer/main.py:33
+#: src/cldr_viewer/main.py:55
 msgid "Date Formats"
 msgstr ""
 
-#: src/cldr_viewer/main.py:34
+#: src/cldr_viewer/main.py:56
 msgid "Date Fields"
 msgstr ""
 
-#: src/cldr_viewer/main.py:35
+#: src/cldr_viewer/main.py:57
 msgid "Currencies"
 msgstr ""
 
-#: src/cldr_viewer/main.py:36
+#: src/cldr_viewer/main.py:58
 msgid "Units"
 msgstr ""
 
-#: src/cldr_viewer/main.py:37
+#: src/cldr_viewer/main.py:59
 msgid "Time Zone Names"
 msgstr ""
 
-#: src/cldr_viewer/main.py:38
+#: src/cldr_viewer/main.py:60
 msgid "Language Names"
 msgstr ""
 
-#: src/cldr_viewer/main.py:39
+#: src/cldr_viewer/main.py:61
 msgid "Territory Names"
 msgstr ""
 
-#: src/cldr_viewer/main.py:46 src/cldr_viewer/main.py:388
+#: src/cldr_viewer/main.py:68 src/cldr_viewer/main.py:424
 msgid "CLDR Locale Viewer"
 msgstr ""
 
-#: src/cldr_viewer/main.py:67
+#: src/cldr_viewer/main.py:90
 msgid "About"
 msgstr ""
 
-#: src/cldr_viewer/main.py:73
+#: src/cldr_viewer/main.py:96
 msgid "Clear cache"
 msgstr ""
 
-#: src/cldr_viewer/main.py:90
+#: src/cldr_viewer/main.py:113
 msgid "Locale:"
 msgstr ""
 
-#: src/cldr_viewer/main.py:96
+#: src/cldr_viewer/main.py:119
 msgid "Compare with:"
 msgstr ""
 
-#: src/cldr_viewer/main.py:102
+#: src/cldr_viewer/main.py:125
 msgid "Category:"
 msgstr ""
 
-#: src/cldr_viewer/main.py:112
+#: src/cldr_viewer/main.py:135
 msgid "Filter keys…"
 msgstr ""
 
-#: src/cldr_viewer/main.py:148
+#: src/cldr_viewer/main.py:177
 msgid "Key"
 msgstr ""
 
-#: src/cldr_viewer/main.py:157
+#: src/cldr_viewer/main.py:186
 msgid "Value"
 msgstr ""
 
-#: src/cldr_viewer/main.py:166
+#: src/cldr_viewer/main.py:195
 msgid "Reference"
 msgstr ""
 
-#: src/cldr_viewer/main.py:175
+#: src/cldr_viewer/main.py:204
 msgid "Status"
 msgstr ""
 
-#: src/cldr_viewer/main.py:287
+#: src/cldr_viewer/main.py:316
 #, python-brace-format
 msgid "Coverage: {percent}% ({present}/{total})"
 msgstr ""
 
-#: src/cldr_viewer/main.py:334
+#: src/cldr_viewer/main.py:370
 msgid "⚠ MISSING"
 msgstr ""
 
-#: src/cldr_viewer/main.py:398
+#: src/cldr_viewer/main.py:435
 msgid "Browse and compare Unicode CLDR locale data"
 msgstr ""
