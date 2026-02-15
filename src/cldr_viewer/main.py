@@ -150,6 +150,9 @@ class CldrViewerWindow(Adw.ApplicationWindow):
         menu = Gio.Menu()
         about_section = Gio.Menu()
         about_section.append(_("About"), "app.about")
+        notif_section = Gio.Menu()
+        notif_section.append(_("Toggle Notifications"), "app.toggle-notifications")
+        menu.append_section(None, notif_section)
         menu.append_section(None, about_section)
         menu_btn = Gtk.MenuButton(icon_name="open-menu-symbolic", menu_model=menu)
         header.pack_end(menu_btn)
@@ -380,6 +383,15 @@ class CldrViewerWindow(Adw.ApplicationWindow):
             item = KeyValueItem(key=key, value=val, compare=cmp_val, missing=missing)
             self._list_store.append(item)
 
+        # Send notification if coverage is low
+        for cat_name, cat_info in coverage.items():
+            if 0 < cat_info.get("percent", 100) < 50:
+                _send_notification(
+                    _("CLDR: Low coverage"),
+                    _("{cat} coverage is {pct}%").format(cat=cat_name, pct=cat_info["percent"]),
+                    "cldr-viewer")
+                break
+
         # Update coverage
         cat_cov = coverage.get(category, {})
         pct = cat_cov.get("percent", 0)
@@ -537,6 +549,8 @@ class CldrViewerApp(Adw.Application):
             application_id="se.danielnylander.cldr-viewer",
             flags=Gio.ApplicationFlags.DEFAULT_FLAGS,
         )
+        if HAS_NOTIFY:
+            _Notify.init("cldr-viewer")
         about_action = Gio.SimpleAction.new("about", None)
         about_action.connect("activate", self._on_about)
         self.add_action(about_action)
@@ -546,6 +560,9 @@ class CldrViewerApp(Adw.Application):
         self.add_action(export_action)
         self.set_accels_for_action("app.export", ["<Control>e"])
 
+        notif_action = Gio.SimpleAction.new("toggle-notifications", None)
+        notif_action.connect("activate", lambda *_: _save_notify_config({"enabled": not _load_notify_config().get("enabled", False)}))
+        self.add_action(notif_action)
 
     def do_startup(self):
         Adw.Application.do_startup(self)
@@ -592,6 +609,8 @@ class CldrViewerApp(Adw.Application):
             translator_credits="Daniel Nylander <daniel@danielnylander.se>",
             comments=_("Browse and compare Unicode CLDR locale data"),
         )
+        about.set_debug_info(_get_system_info())
+        about.set_debug_info_filename("cldr-viewer-debug.txt")
         about.present()
 
 
