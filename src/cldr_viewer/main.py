@@ -9,7 +9,7 @@ import threading
 import gi
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
-from gi.repository import Gtk, Adw, GLib, Gio, Pango
+from gi.repository import Gtk, Adw, GLib, GObject, Gio, Pango
 
 from cldr_viewer.cldr_data import (
     get_available_locales,
@@ -348,7 +348,7 @@ class CldrViewerWindow(Adw.ApplicationWindow):
         self._refresh_data()
 
 
-class KeyValueItem(GLib.Object):
+class KeyValueItem(GObject.Object):
     """List item for the column view."""
     __gtype_name__ = "KeyValueItem"
 
