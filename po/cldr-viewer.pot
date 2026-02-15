@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# Copyright (C) YEAR Daniel Nylander
 # This file is distributed under the same license as the cldr-viewer package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: cldr-viewer 0.1.0\n"
+"Project-Id-Version: cldr-viewer\n"
 "Report-Msgid-Bugs-To: daniel@danielnylander.se\n"
-"POT-Creation-Date: 2026-02-14 16:10+0100\n"
+"POT-Creation-Date: 2026-02-15 10:08+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,63 +45,59 @@ msgstr ""
 msgid "Territory Names"
 msgstr ""
 
-#: src/cldr_viewer/main.py:46
+#: src/cldr_viewer/main.py:46 src/cldr_viewer/main.py:388
 msgid "CLDR Locale Viewer"
 msgstr ""
 
-#: src/cldr_viewer/main.py:65
+#: src/cldr_viewer/main.py:67
+msgid "About"
+msgstr ""
+
+#: src/cldr_viewer/main.py:73
 msgid "Clear cache"
 msgstr ""
 
-#: src/cldr_viewer/main.py:82
+#: src/cldr_viewer/main.py:90
 msgid "Locale:"
 msgstr ""
 
-#: src/cldr_viewer/main.py:88
+#: src/cldr_viewer/main.py:96
 msgid "Compare with:"
 msgstr ""
 
-#: src/cldr_viewer/main.py:94
+#: src/cldr_viewer/main.py:102
 msgid "Category:"
 msgstr ""
 
-#: src/cldr_viewer/main.py:104
+#: src/cldr_viewer/main.py:112
 msgid "Filter keys…"
 msgstr ""
 
-#: src/cldr_viewer/main.py:140
+#: src/cldr_viewer/main.py:148
 msgid "Key"
 msgstr ""
 
-#: src/cldr_viewer/main.py:149
+#: src/cldr_viewer/main.py:157
 msgid "Value"
 msgstr ""
 
-#: src/cldr_viewer/main.py:158
+#: src/cldr_viewer/main.py:166
 msgid "Reference"
 msgstr ""
 
-#: src/cldr_viewer/main.py:167
+#: src/cldr_viewer/main.py:175
 msgid "Status"
 msgstr ""
 
-#: src/cldr_viewer/main.py:279
+#: src/cldr_viewer/main.py:287
 #, python-brace-format
 msgid "Coverage: {percent}% ({present}/{total})"
 msgstr ""
 
-#: src/cldr_viewer/main.py:326
+#: src/cldr_viewer/main.py:334
 msgid "⚠ MISSING"
 msgstr ""
 
-#: desktop file
-msgid "CLDR Data Browser"
-msgstr ""
-
-#: desktop file
-msgid "Visualize Unicode CLDR locale data completeness"
-msgstr ""
-
-#: desktop file
-msgid "cldr;locale;translation;i18n;l10n;unicode;"
+#: src/cldr_viewer/main.py:398
+msgid "Browse and compare Unicode CLDR locale data"
 msgstr ""
