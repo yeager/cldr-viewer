@@ -160,6 +160,11 @@ class CldrViewerWindow(Adw.ApplicationWindow):
         self._theme_btn.connect("clicked", self._on_theme_toggle)
         header.pack_end(self._theme_btn)
 
+        export_btn = Gtk.Button(icon_name="document-save-symbolic")
+        export_btn.set_tooltip_text(_("Export data"))
+        export_btn.connect("clicked", self._on_export_clicked)
+        header.pack_end(export_btn)
+
         clear_btn = Gtk.Button(icon_name="edit-clear-all-symbolic")
         clear_btn.set_tooltip_text(_("Clear cache"))
         clear_btn.connect("clicked", self._on_clear_cache)
@@ -455,6 +460,46 @@ class CldrViewerWindow(Adw.ApplicationWindow):
         else:
             label.set_text("✅")
 
+    def _on_export_clicked(self, *_args):
+        dialog = Adw.MessageDialog(transient_for=self,
+                                   heading=_("Export Data"),
+                                   body=_("Choose export format:"))
+        dialog.add_response("cancel", _("Cancel"))
+        dialog.add_response("csv", "CSV")
+        dialog.add_response("json", "JSON")
+        dialog.set_response_appearance("csv", Adw.ResponseAppearance.SUGGESTED)
+        dialog.connect("response", self._on_export_format_chosen)
+        dialog.present()
+
+    def _on_export_format_chosen(self, dialog, response):
+        if response not in ("csv", "json"):
+            return
+        self._export_fmt = response
+        fd = Gtk.FileDialog()
+        fd.set_initial_name(f"cldr-export.{response}")
+        fd.save(self, None, self._on_export_save)
+
+    def _on_export_save(self, dialog, result):
+        try:
+            path = dialog.save_finish(result).get_path()
+        except Exception:
+            return
+        data = []
+        for i in range(self._list_store.get_n_items()):
+            item = self._list_store.get_item(i)
+            data.append({"key": item.key, "value": item.value,
+                         "reference": item.compare, "missing": item.missing})
+        if not data:
+            return
+        if self._export_fmt == "csv":
+            with open(path, "w", newline="", encoding="utf-8") as f:
+                w = csv.DictWriter(f, fieldnames=data[0].keys())
+                w.writeheader()
+                w.writerows(data)
+        else:
+            with open(path, "w", encoding="utf-8") as f:
+                json.dump(data, f, ensure_ascii=False, indent=2)
+
     def _on_clear_cache(self, btn):
         clear_cache()
         self._refresh_data()
@@ -495,6 +540,11 @@ class CldrViewerApp(Adw.Application):
         about_action = Gio.SimpleAction.new("about", None)
         about_action.connect("activate", self._on_about)
         self.add_action(about_action)
+
+        export_action = Gio.SimpleAction.new("export", None)
+        export_action.connect("activate", lambda *_: self.props.active_window and self.props.active_window._on_export_clicked())
+        self.add_action(export_action)
+        self.set_accels_for_action("app.export", ["<Control>e"])
 
 
     def do_startup(self):
