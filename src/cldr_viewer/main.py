@@ -9,7 +9,7 @@ import threading
 import gi
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
-from gi.repository import Gtk, Adw, GLib, GObject, Gio, Pango
+from gi.repository import Gtk, Adw, GLib, GObject, Gio, Pango, Gdk
 
 from cldr_viewer.cldr_data import (
     get_available_locales,
@@ -29,6 +29,28 @@ gettext.textdomain(TEXTDOMAIN)
 _ = gettext.gettext
 
 
+def _setup_heatmap_css():
+    css = b"""
+    .heatmap-green { background-color: #26a269; color: white; border-radius: 8px; }
+    .heatmap-yellow { background-color: #e5a50a; color: white; border-radius: 8px; }
+    .heatmap-orange { background-color: #ff7800; color: white; border-radius: 8px; }
+    .heatmap-red { background-color: #c01c28; color: white; border-radius: 8px; }
+    .heatmap-gray { background-color: #77767b; color: white; border-radius: 8px; }
+    """
+    provider = Gtk.CssProvider()
+    provider.load_from_data(css)
+    Gtk.StyleContext.add_provider_for_display(
+        Gdk.Display.get_default(), provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
+
+
+def _heatmap_css_class(pct):
+    if pct >= 95: return "heatmap-green"
+    elif pct >= 70: return "heatmap-yellow"
+    elif pct >= 40: return "heatmap-orange"
+    elif pct > 0: return "heatmap-red"
+    return "heatmap-gray"
+
+
 CATEGORY_LABELS = {
     "dates": _("Date Formats"),
     "dateFields": _("Date Fields"),
@@ -46,6 +68,7 @@ class CldrViewerWindow(Adw.ApplicationWindow):
         self.set_title(_("CLDR Locale Viewer"))
         self.set_default_size(1100, 750)
 
+        _setup_heatmap_css()
         self._locales = []
         self._current_locale = ""
         self._compare_locale = ""
@@ -125,9 +148,15 @@ class CldrViewerWindow(Adw.ApplicationWindow):
         self._coverage_bar.set_valign(Gtk.Align.CENTER)
         self._coverage_box.append(self._coverage_bar)
 
-        # Overview (all categories)
-        self._overview_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=12)
-        content.append(self._overview_box)
+        # Overview heatmap (all categories)
+        self._overview_flow = Gtk.FlowBox()
+        self._overview_flow.set_selection_mode(Gtk.SelectionMode.NONE)
+        self._overview_flow.set_homogeneous(True)
+        self._overview_flow.set_min_children_per_line(3)
+        self._overview_flow.set_max_children_per_line(7)
+        self._overview_flow.set_column_spacing(6)
+        self._overview_flow.set_row_spacing(6)
+        content.append(self._overview_flow)
 
         # Scrolled data view
         sw = Gtk.ScrolledWindow()
@@ -290,26 +319,33 @@ class CldrViewerWindow(Adw.ApplicationWindow):
         )
         self._coverage_bar.set_fraction(pct / 100.0)
 
-        # Overview chips
-        while self._overview_box.get_first_child():
-            self._overview_box.remove(self._overview_box.get_first_child())
+        # Overview heatmap cells
+        while True:
+            child = self._overview_flow.get_first_child()
+            if child is None:
+                break
+            self._overview_flow.remove(child)
         for cat, info in coverage.items():
-            label = Gtk.Label(
-                label=f"{CATEGORY_LABELS.get(cat, cat)}: {info['percent']}%"
-            )
-            if info["percent"] >= 95:
-                label.add_css_class("success")
-            elif info["percent"] >= 70:
-                label.add_css_class("warning")
-            else:
-                label.add_css_class("error")
-            frame = Gtk.Frame()
-            frame.set_child(label)
-            label.set_margin_start(6)
-            label.set_margin_end(6)
-            label.set_margin_top(2)
-            label.set_margin_bottom(2)
-            self._overview_box.append(frame)
+            pct_val = info["percent"]
+            box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=2)
+            box.set_size_request(140, 60)
+            box.add_css_class(_heatmap_css_class(pct_val))
+            box.set_margin_start(4)
+            box.set_margin_end(4)
+            box.set_margin_top(4)
+            box.set_margin_bottom(4)
+            cat_lbl = Gtk.Label(label=CATEGORY_LABELS.get(cat, cat))
+            cat_lbl.set_ellipsize(Pango.EllipsizeMode.END)
+            cat_lbl.set_max_width_chars(18)
+            cat_lbl.set_margin_top(6)
+            cat_lbl.set_margin_start(6)
+            cat_lbl.set_margin_end(6)
+            box.append(cat_lbl)
+            pct_lbl = Gtk.Label(label=f"{pct_val}%")
+            pct_lbl.set_margin_bottom(6)
+            box.append(pct_lbl)
+            box.set_tooltip_text(f"{CATEGORY_LABELS.get(cat, cat)}: {info['present']}/{info['total']}")
+            self._overview_flow.append(box)
 
     def _setup_label(self, factory, list_item):
         label = Gtk.Label(xalign=0)
