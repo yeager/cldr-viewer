@@ -75,7 +75,6 @@ CATEGORY_LABELS = {
 import json as _json
 import platform as _platform
 from pathlib import Path as _Path
-from datetime import datetime as _dt_now
 
 _NOTIFY_APP = "cldr-viewer"
 
