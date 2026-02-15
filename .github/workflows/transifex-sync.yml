@@ -29,6 +29,9 @@ jobs:
           TX_TOKEN: ${{ secrets.TX_TOKEN }}
         run: tx pull --all --force --minimum-perc=20
 
+      - name: Install gettext
+        run: sudo apt-get install -y gettext
+
       - name: Compile .mo files
         run: |
           for po in po/*.po; do
