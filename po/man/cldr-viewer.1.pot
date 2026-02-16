@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2026-02-15 15:38+0100\n"
+"POT-Creation-Date: 2026-02-16 08:43+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -99,60 +99,110 @@ msgstr ""
 #. type: SH
 #: data/man/cldr-viewer.1:12
 #, no-wrap
-msgid "FILES"
+msgid "KEYBOARD SHORTCUTS"
 msgstr ""
 
 #. type: TP
 #: data/man/cldr-viewer.1:13
 #, no-wrap
-msgid "I<~/.config/cldr-viewer/>"
+msgid "B<Ctrl+Q>"
 msgstr ""
 
 #. type: Plain text
 #: data/man/cldr-viewer.1:16
-msgid "Configuration files."
+msgid "Quit the application"
 msgstr ""
 
 #. type: TP
 #: data/man/cldr-viewer.1:16
 #, no-wrap
-msgid "I<~/.cache/cldr-viewer/>"
+msgid "B<F5>"
 msgstr ""
 
 #. type: Plain text
 #: data/man/cldr-viewer.1:19
+msgid "Refresh the current data"
+msgstr ""
+
+#. type: TP
+#: data/man/cldr-viewer.1:19
+#, no-wrap
+msgid "B<Ctrl+/>"
+msgstr ""
+
+#. type: Plain text
+#: data/man/cldr-viewer.1:22
+msgid "Show keyboard shortcuts dialog"
+msgstr ""
+
+#. type: TP
+#: data/man/cldr-viewer.1:22
+#, no-wrap
+msgid "B<Ctrl+E>"
+msgstr ""
+
+#. type: Plain text
+#: data/man/cldr-viewer.1:25
+msgid "Export current view to CSV or JSON format"
+msgstr ""
+
+#. type: SH
+#: data/man/cldr-viewer.1:25
+#, no-wrap
+msgid "FILES"
+msgstr ""
+
+#. type: TP
+#: data/man/cldr-viewer.1:26
+#, no-wrap
+msgid "I<~/.config/cldr-viewer/>"
+msgstr ""
+
+#. type: Plain text
+#: data/man/cldr-viewer.1:29
+msgid "Configuration files."
+msgstr ""
+
+#. type: TP
+#: data/man/cldr-viewer.1:29
+#, no-wrap
+msgid "I<~/.cache/cldr-viewer/>"
+msgstr ""
+
+#. type: Plain text
+#: data/man/cldr-viewer.1:32
 msgid "Cached data."
 msgstr ""
 
 #. type: SH
-#: data/man/cldr-viewer.1:19
+#: data/man/cldr-viewer.1:32
 #, no-wrap
 msgid "BUGS"
 msgstr ""
 
 #. type: Plain text
-#: data/man/cldr-viewer.1:21
+#: data/man/cldr-viewer.1:34
 msgid "Report bugs at https://github.com/yeager/cldr-viewer/issues"
 msgstr ""
 
 #. type: SH
-#: data/man/cldr-viewer.1:21
+#: data/man/cldr-viewer.1:34
 #, no-wrap
 msgid "AUTHOR"
 msgstr ""
 
 #. type: Plain text
-#: data/man/cldr-viewer.1:23
+#: data/man/cldr-viewer.1:36
 msgid "Daniel Nylander E<lt>daniel@danielnylander.seE<gt>"
 msgstr ""
 
 #. type: SH
-#: data/man/cldr-viewer.1:23
+#: data/man/cldr-viewer.1:36
 #, no-wrap
 msgid "SEE ALSO"
 msgstr ""
 
 #. type: Plain text
-#: data/man/cldr-viewer.1:24
+#: data/man/cldr-viewer.1:37
 msgid "Project homepage: https://github.com/yeager/cldr-viewer"
 msgstr ""
