@@ -101,3 +101,15 @@ msgstr ""
 #: src/cldr_viewer/main.py:435
 msgid "Browse and compare Unicode CLDR locale data"
 msgstr ""
+
+#: cldr-viewer/data/se.danielnylander.cldr-viewer.desktop.in
+msgid "CLDR Data Browser"
+msgstr ""
+
+#: cldr-viewer/data/se.danielnylander.cldr-viewer.desktop.in
+msgid "Visualize Unicode CLDR locale data completeness"
+msgstr ""
+
+#: cldr-viewer/data/se.danielnylander.cldr-viewer.desktop.in
+msgid "cldr;locale;translation;i18n;l10n;unicode;"
+msgstr ""
