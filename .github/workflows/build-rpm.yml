@@ -1,0 +1,101 @@
+name: Build RPM
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-rpm:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install RPM tools
+        run: sudo apt-get update && sudo apt-get install -y rpm
+
+      - name: Get version
+        id: version
+        run: echo "version=$(grep -oP '__version__ = "\K[^"]+' src/cldr_viewer/__init__.py)" >> $GITHUB_OUTPUT
+
+      - name: Setup RPM build
+        run: |
+          mkdir -p ~/rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
+          VERSION=${{ steps.version.outputs.version }}
+          DIR=cldr-viewer-$VERSION
+          mkdir -p $DIR/src/cldr_viewer
+          mkdir -p $DIR/data/icons $DIR/data/man
+          cp src/cldr_viewer/*.py $DIR/src/cldr_viewer/
+          cp data/se.danielnylander.cldr-viewer.desktop $DIR/data/
+          cp data/icons/se.danielnylander.cldr-viewer.svg $DIR/data/icons/
+          cp data/man/cldr-viewer.1 $DIR/data/man/
+          cp LICENSE $DIR/
+          test -f po/sv/LC_MESSAGES/cldr-viewer.mo && { mkdir -p $DIR/po/sv/LC_MESSAGES; cp po/sv/LC_MESSAGES/cldr-viewer.mo $DIR/po/sv/LC_MESSAGES/; } || true
+          tar czf ~/rpmbuild/SOURCES/$DIR.tar.gz $DIR
+
+      - name: Create spec file
+        run: |
+          cat > ~/rpmbuild/SPECS/cldr-viewer.spec << 'SPEC'
+          Name:           cldr-viewer
+          Version:        VERSION_PLACEHOLDER
+          Release:        1
+          Summary:        CLDR locale data viewer
+          License:        GPL-3.0-or-later
+          URL:            https://github.com/yeager/cldr-viewer
+          Source0:        %{name}-%{version}.tar.gz
+          BuildArch:      noarch
+          Requires:       python3 >= 3.9
+          Requires:       python3-gobject
+          Requires:       gtk4
+          Requires:       libadwaita
+
+          %description
+          A GTK4/Libadwaita application for browsing Unicode CLDR locale data.
+
+          %prep
+          %setup -q
+
+          %install
+          mkdir -p %{buildroot}%{_datadir}/cldr-viewer/cldr_viewer
+          cp src/cldr_viewer/*.py %{buildroot}%{_datadir}/cldr-viewer/cldr_viewer/
+          mkdir -p %{buildroot}%{_bindir}
+          cat > %{buildroot}%{_bindir}/cldr-viewer << 'WRAPPER'
+          #!/bin/bash
+          exec python3 -c "import sys; sys.path.insert(0, '/usr/share/cldr-viewer'); from cldr_viewer.main import main; main()" "$@"
+          WRAPPER
+          chmod 755 %{buildroot}%{_bindir}/cldr-viewer
+          install -Dm644 data/se.danielnylander.cldr-viewer.desktop %{buildroot}%{_datadir}/applications/se.danielnylander.cldr-viewer.desktop
+          install -Dm644 data/icons/se.danielnylander.cldr-viewer.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/se.danielnylander.cldr-viewer.svg
+          install -Dm644 data/man/cldr-viewer.1 %{buildroot}%{_mandir}/man1/cldr-viewer.1
+          test -f po/sv/LC_MESSAGES/cldr-viewer.mo && install -Dm644 po/sv/LC_MESSAGES/cldr-viewer.mo %{buildroot}%{_datadir}/locale/sv/LC_MESSAGES/cldr-viewer.mo || true
+
+          %files
+          %license LICENSE
+          %{_bindir}/cldr-viewer
+          %{_datadir}/cldr-viewer/
+          %{_datadir}/applications/se.danielnylander.cldr-viewer.desktop
+          %{_datadir}/icons/hicolor/scalable/apps/se.danielnylander.cldr-viewer.svg
+          %{_mandir}/man1/cldr-viewer.1*
+          %{_datadir}/locale/sv/LC_MESSAGES/cldr-viewer.mo
+
+          %changelog
+          * $(date "+%a %b %d %Y") Daniel Nylander <daniel@danielnylander.se> - VERSION_PLACEHOLDER-1
+          - RPM package
+          SPEC
+          sed -i "s/VERSION_PLACEHOLDER/${{ steps.version.outputs.version }}/g" ~/rpmbuild/SPECS/cldr-viewer.spec
+
+      - name: Build RPM
+        run: rpmbuild -ba ~/rpmbuild/SPECS/cldr-viewer.spec
+
+      - name: Upload RPM to release
+        if: github.event_name == 'release'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          VERSION=${{ steps.version.outputs.version }}
+          gh release upload "v$VERSION" \
+            ~/rpmbuild/RPMS/noarch/cldr-viewer-${VERSION}-1.noarch.rpm \
+            --clobber
