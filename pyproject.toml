@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "cldr-viewer"
-version = "0.1.6"
+version = "0.1.7"
 description = "GTK4/Adwaita app to visualize Unicode CLDR locale data completeness"
 readme = "README.md"
 license = {text = "GPL-3.0-or-later"}
