@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Daniel Nylander
-# This file is distributed under the same license as the cldr-viewer package.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
@@ -9,9 +9,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: cldr-viewer\n"
-"Report-Msgid-Bugs-To: daniel@danielnylander.se\n"
-"POT-Creation-Date: 2026-02-15 10:57+0100\n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-02-16 17:14+0100\n"
 "PO-Revision-Date: 2026-02-14 17:11+0000\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>, 2026\n"
 "Language-Team: Swedish (https://app.transifex.com/danielnylander/teams/304773/sv/)\n"
@@ -21,87 +21,116 @@ msgstr ""
 "Language: sv\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/cldr_viewer/main.py:55
+#: src/cldr_viewer/main.py:64
 msgid "Date Formats"
 msgstr "Datumformat"
 
-#: src/cldr_viewer/main.py:56
+#: src/cldr_viewer/main.py:65
 msgid "Date Fields"
 msgstr "Datumfält"
 
-#: src/cldr_viewer/main.py:57
+#: src/cldr_viewer/main.py:66
 msgid "Currencies"
 msgstr "Valutor"
 
-#: src/cldr_viewer/main.py:58
+#: src/cldr_viewer/main.py:67
 msgid "Units"
 msgstr "Enheter"
 
-#: src/cldr_viewer/main.py:59
+#: src/cldr_viewer/main.py:68
 msgid "Time Zone Names"
 msgstr "Tidszonernas namn"
 
-#: src/cldr_viewer/main.py:60
+#: src/cldr_viewer/main.py:69
 msgid "Language Names"
 msgstr "Språknamn"
 
-#: src/cldr_viewer/main.py:61
+#: src/cldr_viewer/main.py:70
 msgid "Territory Names"
 msgstr "Territoriernas namn"
 
-#: src/cldr_viewer/main.py:68 src/cldr_viewer/main.py:424
+#: src/cldr_viewer/main.py:122 src/cldr_viewer/main.py:597
 msgid "CLDR Locale Viewer"
 msgstr "CLDR-språkinställningsvisare"
 
-#: src/cldr_viewer/main.py:90
+#: src/cldr_viewer/main.py:151
 msgid "About"
 msgstr "Om"
 
-#: src/cldr_viewer/main.py:96
+#: src/cldr_viewer/main.py:153
+msgid "Toggle Notifications"
+msgstr ""
+
+#: src/cldr_viewer/main.py:166
+msgid "Export data"
+msgstr ""
+
+#: src/cldr_viewer/main.py:171
 msgid "Clear cache"
 msgstr "Töm cache"
 
-#: src/cldr_viewer/main.py:113
+#: src/cldr_viewer/main.py:188
 msgid "Locale:"
 msgstr "Locale:"
 
-#: src/cldr_viewer/main.py:119
+#: src/cldr_viewer/main.py:194
 msgid "Compare with:"
 msgstr "Jämför med:"
 
-#: src/cldr_viewer/main.py:125
+#: src/cldr_viewer/main.py:200
 msgid "Category:"
 msgstr "Kategori:"
 
-#: src/cldr_viewer/main.py:135
+#: src/cldr_viewer/main.py:210
 msgid "Filter keys…"
 msgstr "Filtrera nycklar…"
 
-#: src/cldr_viewer/main.py:177
+#: src/cldr_viewer/main.py:252
 msgid "Key"
 msgstr "Nyckel"
 
-#: src/cldr_viewer/main.py:186
+#: src/cldr_viewer/main.py:261
 msgid "Value"
 msgstr "Värde"
 
-#: src/cldr_viewer/main.py:195
+#: src/cldr_viewer/main.py:270
 msgid "Reference"
 msgstr "Referens"
 
-#: src/cldr_viewer/main.py:204
+#: src/cldr_viewer/main.py:279
 msgid "Status"
 msgstr "Status"
 
-#: src/cldr_viewer/main.py:316
+#: src/cldr_viewer/main.py:389
+msgid "CLDR: Low coverage"
+msgstr ""
+
+#: src/cldr_viewer/main.py:390
+#, python-brace-format
+msgid "{cat} coverage is {pct}%"
+msgstr ""
+
+#: src/cldr_viewer/main.py:400
 #, python-brace-format
 msgid "Coverage: {percent}% ({present}/{total})"
 msgstr "Täckning: {percent}% ({present}/{total})"
 
-#: src/cldr_viewer/main.py:370
+#: src/cldr_viewer/main.py:454
 msgid "⚠ MISSING"
 msgstr "⚠ SAKNAS"
 
-#: src/cldr_viewer/main.py:435
+#: src/cldr_viewer/main.py:476
+msgid "Export Data"
+msgstr ""
+
+#: src/cldr_viewer/main.py:477
+msgid "Choose export format:"
+msgstr ""
+
+#: src/cldr_viewer/main.py:478
+msgid "Cancel"
+msgstr ""
+
+#: src/cldr_viewer/main.py:608
 msgid "Browse and compare Unicode CLDR locale data"
 msgstr "Bläddra och jämför Unicode CLDR-språkinställningsdata"
