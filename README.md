@@ -1,5 +1,9 @@
 # CLDR Locale Viewer
 
+## Screenshot
+
+![Ubuntu L10n](screenshots/main.png)
+
 A GTK4/Adwaita application for browsing and comparing Unicode CLDR locale data across locales.
 
 ![Screenshot](data/screenshots/screenshot-01.png)
