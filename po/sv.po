@@ -59,11 +59,11 @@ msgstr "Om"
 
 #: src/cldr_viewer/main.py:153
 msgid "Toggle Notifications"
-msgstr ""
+msgstr "Växla aviseringar"
 
 #: src/cldr_viewer/main.py:166
 msgid "Export data"
-msgstr ""
+msgstr "Exportera data"
 
 #: src/cldr_viewer/main.py:171
 msgid "Clear cache"
@@ -103,12 +103,12 @@ msgstr "Status"
 
 #: src/cldr_viewer/main.py:389
 msgid "CLDR: Low coverage"
-msgstr ""
+msgstr "CLDR: Låg täckning"
 
 #: src/cldr_viewer/main.py:390
 #, python-brace-format
 msgid "{cat} coverage is {pct}%"
-msgstr ""
+msgstr "{cat} täckning är {pct}%"
 
 #: src/cldr_viewer/main.py:400
 #, python-brace-format
@@ -121,15 +121,15 @@ msgstr "⚠ SAKNAS"
 
 #: src/cldr_viewer/main.py:476
 msgid "Export Data"
-msgstr ""
+msgstr "Exportera data"
 
 #: src/cldr_viewer/main.py:477
 msgid "Choose export format:"
-msgstr ""
+msgstr "Välj exportformat:"
 
 #: src/cldr_viewer/main.py:478
 msgid "Cancel"
-msgstr ""
+msgstr "Avbryt"
 
 #: src/cldr_viewer/main.py:608
 msgid "Browse and compare Unicode CLDR locale data"
