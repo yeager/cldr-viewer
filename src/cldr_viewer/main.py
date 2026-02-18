@@ -516,18 +516,6 @@ class CldrViewerWindow(Adw.ApplicationWindow):
         self._refresh_data()
 
 
-class KeyValueItem(GObject.Object):
-    """List item for the column view."""
-    __gtype_name__ = "KeyValueItem"
-
-    def __init__(self, key="", value="", compare="", missing=False):
-        super().__init__()
-        self.key = key
-        self.value = value
-        self.compare = compare
-        self.missing = missing
-
-
 
     def _on_theme_toggle(self, _btn):
         sm = Adw.StyleManager.get_default()
@@ -541,6 +529,18 @@ class KeyValueItem(GObject.Object):
     def _update_status_bar(self):
         self._status_bar.set_text("Last updated: " + _dt_now.now().strftime("%Y-%m-%d %H:%M"))
 
+
+
+class KeyValueItem(GObject.Object):
+    """List item for the column view."""
+    __gtype_name__ = "KeyValueItem"
+
+    def __init__(self, key="", value="", compare="", missing=False):
+        super().__init__()
+        self.key = key
+        self.value = value
+        self.compare = compare
+        self.missing = missing
 
 class CldrViewerApp(Adw.Application):
     def __init__(self):
