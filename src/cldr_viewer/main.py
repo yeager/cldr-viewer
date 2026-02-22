@@ -37,7 +37,6 @@ gettext.bindtextdomain(TEXTDOMAIN, localedir)
 gettext.textdomain(TEXTDOMAIN)
 _ = gettext.gettext
 
-
 def _setup_heatmap_css():
     css = b"""
     .heatmap-green { background-color: #26a269; color: white; border-radius: 8px; }
@@ -51,14 +50,12 @@ def _setup_heatmap_css():
     Gtk.StyleContext.add_provider_for_display(
         Gdk.Display.get_default(), provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
 
-
 def _heatmap_css_class(pct):
     if pct >= 95: return "heatmap-green"
     elif pct >= 70: return "heatmap-yellow"
     elif pct >= 40: return "heatmap-orange"
     elif pct > 0: return "heatmap-red"
     return "heatmap-gray"
-
 
 CATEGORY_LABELS = {
     "dates": _("Date Formats"),
@@ -70,18 +67,14 @@ CATEGORY_LABELS = {
     "territories": _("Territory Names"),
 }
 
-
-
 import json as _json
 import platform as _platform
 from pathlib import Path as _Path
 
 _NOTIFY_APP = "cldr-viewer"
 
-
 def _notify_config_path():
     return _Path(GLib.get_user_config_dir()) / _NOTIFY_APP / "notifications.json"
-
 
 def _load_notify_config():
     try:
@@ -89,12 +82,10 @@ def _load_notify_config():
     except Exception:
         return {"enabled": False}
 
-
 def _save_notify_config(config):
     p = _notify_config_path()
     p.parent.mkdir(parents=True, exist_ok=True)
     p.write_text(_json.dumps(config))
-
 
 def _send_notification(summary, body="", icon="dialog-information"):
     if HAS_NOTIFY and _load_notify_config().get("enabled"):
@@ -103,7 +94,6 @@ def _send_notification(summary, body="", icon="dialog-information"):
             n.show()
         except Exception:
             pass
-
 
 def _get_system_info():
     return "\n".join([
@@ -114,7 +104,6 @@ def _get_system_info():
         f"Python: {_platform.python_version()}",
         f"OS: {_platform.system()} {_platform.release()} ({_platform.machine()})",
     ])
-
 
 class CldrViewerWindow(Adw.ApplicationWindow):
     def __init__(self, **kwargs):
@@ -515,8 +504,6 @@ class CldrViewerWindow(Adw.ApplicationWindow):
         clear_cache()
         self._refresh_data()
 
-
-
     def _on_theme_toggle(self, _btn):
         sm = Adw.StyleManager.get_default()
         if sm.get_color_scheme() == Adw.ColorScheme.FORCE_DARK:
@@ -528,8 +515,6 @@ class CldrViewerWindow(Adw.ApplicationWindow):
 
     def _update_status_bar(self):
         self._status_bar.set_text("Last updated: " + _dt_now.now().strftime("%Y-%m-%d %H:%M"))
-
-
 
 class KeyValueItem(GObject.Object):
     """List item for the column view."""
@@ -603,19 +588,18 @@ class CldrViewerApp(Adw.Application):
             license_type=Gtk.License.GPL_3_0,
             website="https://github.com/yeager/cldr-viewer",
             issue_url="https://github.com/yeager/cldr-viewer/issues",
-            translate_url="https://app.transifex.com/danielnylander/cldr-viewer/",
             translator_credits=_("Translate this app: https://www.transifex.com/danielnylander/cldr-viewer/"),
             comments=_("Browse and compare Unicode CLDR locale data"),
         )
         about.set_debug_info(_get_system_info())
         about.set_debug_info_filename("cldr-viewer-debug.txt")
-        about.present(self.props.active_window)
+        about.add_link(_("Help translate"), "https://app.transifex.com/danielnylander/cldr-viewer/")
 
+        about.present(self.props.active_window)
 
 def main():
     app = CldrViewerApp()
     app.run(sys.argv)
-
 
 if __name__ == "__main__":
     main()
