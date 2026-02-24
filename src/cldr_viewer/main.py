@@ -531,6 +531,7 @@ class CldrViewerApp(Adw.Application):
     def __init__(self):
         super().__init__(
             application_id="se.danielnylander.cldr-viewer",
+        GLib.set_application_name(_("CLDR Locale Viewer"))
             flags=Gio.ApplicationFlags.DEFAULT_FLAGS,
         )
         if HAS_NOTIFY:

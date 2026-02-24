@@ -1,5 +1,6 @@
 [Desktop Entry]
 Type=Application
+StartupWMClass=se.danielnylander.cldr-viewer
 Name=CLDR Locale Viewer
 Name[sv]=CLDR-språkinställningsvisare
 GenericName=CLDR Data Browser
